@@ -20,7 +20,10 @@ echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-st
 apt update -y
 apt upgrade -y
 
-apt install gcc g++ make docker.io htop net-tools ssh supervisor curl postgresql-client postgresql-client-common nginx jsvc wget nano docker-compose ffmpeg poppler-utils ubuntu-restricted-extras gstreamer -y
+apt install gcc g++ make docker.io htop net-tools ssh supervisor curl postgresql-client postgresql-client-common nginx -y
+apt install libavcodec58 jsvc wget nano docker-compose ffmpeg poppler-utils ubuntu-restricted-extras gstreamer -y
+apt install libdvdnav4 libdvd-pkg gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly -y
+sudo dpkg-reconfigure libdvd-pkg
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
