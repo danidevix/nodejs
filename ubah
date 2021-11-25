@@ -1,0 +1,49 @@
+apt install curl wget -y 
+sudo add-apt-repository multiverse
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+
+ 
+apt update -y
+apt upgrade -y
+
+apt install gcc g++ make docker.io htop net-tools ssh supervisor curl postgresql-client postgresql-client-common nginx jsvc wget nano docker-compose ffmpeg poppler-utils ubuntu-restricted-extras ibgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools -y
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+wget https://static.tp-link.com/2020/202004/20200420/omada_v3.2.10_linux_x64_20200330135119.deb
+dpkg -i omada_v3.2.10_linux_x64_20200330135119.deb
+sh nodesource_setup.sh
+systemctl enable supervisor
+systemctl enable nginx
+systemctl enable docker
+systemctl enable tpeap
+systemctl enable anydesk
+npm upgrade npm -g
+npm install -g npm
+npm install -g yarn
+
+node -v
+npm -v
+yarn -v
+docker -v 
+docker-compose -v 
+nginx -v 
+anydesk --version
+docker-compose --version
+
+
