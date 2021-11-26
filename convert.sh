@@ -1,3 +1,4 @@
+#convert first page pdf to png
 #!/bin/bash
 rm -rf *png
 ls *.pdf > oldValues
