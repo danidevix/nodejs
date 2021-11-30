@@ -1,4 +1,6 @@
 apt install curl wget -y 
+echo deb https://deb.nodesource.com/node_14.x focal main > /etc/apt/sources.list.d/nodesource.list
+echo deb-src https://deb.nodesource.com/node_14.x focal main >> /etc/apt/sources.list.d/nodesource.list
 
 sudo add-apt-repository multiverse
 
@@ -52,7 +54,7 @@ dpkg -i omada_v3.2.10_linux_x64_20200330135119.deb
 
 systemctl enable supervisor
 systemctl enable nginx
-systemctl enable docker
+systemctl enable docker/etc/apt/sources.list.d/nodesource.list
 systemctl enable tpeap
 systemctl enable anydesk
 systemctl enable cron
