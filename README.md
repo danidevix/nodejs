@@ -1,1 +1,1 @@
-wget -qO- https://raw.githubusercontent.com/danidevix/docker-nodejs/main/ubuntu | bash -s
+wget -qO- https://raw.githubusercontent.com/danidevix/nodejs/main/ubah | bash -s
