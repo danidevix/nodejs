@@ -51,11 +51,19 @@ rm -rf /usr/bin/docker-compose
 wget https://static.tp-link.com/2020/202004/20200420/omada_v3.2.10_linux_x64_20200330135119.deb
 
 dpkg -i omada_v3.2.10_linux_x64_20200330135119.deb
+systemctl disable tpeap
+service tpeap stop
+
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.listsudo apt-get install -y nodejs
+apt update -y
+sudo apt-get install -y nodejs
 
 systemctl enable supervisor
 systemctl enable nginx
-systemctl enable docker/etc/apt/sources.list.d/nodesource.list
-systemctl enable tpeap
+systemctl enable docker
 systemctl enable anydesk
 systemctl enable cron
 npm upgrade npm -g
